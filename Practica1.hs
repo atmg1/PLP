@@ -27,6 +27,18 @@ mapMio f = foldr (\x rec -> f x : rec) []
 
 --III)
 
+{-
+f :: (Num a) => a -> [a] -> [a]
+f x xs = x:(map (+x) xs) 
+f x = (:) x . map (+x)
+
+sumasParcialesEx :: (Num a) => [a] -> [a]
+sumasParcialesEx [] = []
+sumasParcialesEx (x:xs) = f x (sumasParcialesEx xs)
+-}
+
 sumasParciales :: (Num a) => [a] -> [a]
---sumasParciales xs = foldr f [] xs
+sumasParciales = foldr (\x rec -> x:(map (+x) rec)) []
+--sumasParciales = foldr (\x -> (:) x . map (+x)) []
+
 
